@@ -1,0 +1,103 @@
+{
+  "template": "template.pptx",
+  "output": "output_presentation.pptx",
+  "slides": [
+    {
+      "layout": "title",
+      "content": {
+        "title": "2024 年度業務報告",
+        "subtitle": "成果展示與未來展望"
+      }
+    },
+    {
+      "layout": "content",
+      "content": {
+        "title": "執行摘要",
+        "body": [
+          "本年度業績表現優異,營收成長達 25%",
+          "成功拓展三個新市場區域",
+          "產品創新獲得業界肯定",
+          "客戶滿意度提升至 95%"
+        ]
+      }
+    },
+    {
+      "layout": "two_column",
+      "content": {
+        "title": "優勢與挑戰",
+        "left": "優勢:\n• 強大的研發團隊\n• 完善的供應鏈\n• 優質的客戶基礎\n• 創新的產品線",
+        "right": "挑戰:\n• 市場競爭加劇\n• 原材料成本上升\n• 人才招募困難\n• 國際市場波動"
+      }
+    },
+    {
+      "layout": "table",
+      "content": {
+        "title": "季度財務表現",
+        "table": {
+          "headers": ["季度", "營收(百萬)", "利潤(百萬)", "成長率"],
+          "rows": [
+            ["Q1 2024", "150", "30", "15%"],
+            ["Q2 2024", "180", "38", "20%"],
+            ["Q3 2024", "210", "45", "25%"],
+            ["Q4 2024", "240", "55", "30%"]
+          ]
+        }
+      }
+    },
+    {
+      "layout": "chart",
+      "content": {
+        "title": "年度營收趨勢",
+        "chart": {
+          "type": "column",
+          "data": {
+            "categories": ["Q1", "Q2", "Q3", "Q4"],
+            "series": [
+              {
+                "name": "2023年",
+                "values": [130, 150, 168, 185]
+              },
+              {
+                "name": "2024年",
+                "values": [150, 180, 210, 240]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "layout": "chart",
+      "content": {
+        "title": "市場份額分布",
+        "chart": {
+          "type": "pie",
+          "data": {
+            "categories": ["亞太地區", "北美", "歐洲", "其他"],
+            "series": [
+              {
+                "name": "市場份額",
+                "values": [45, 30, 20, 5]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "layout": "image",
+      "content": {
+        "title": "產品展示",
+        "image": "sample_image.png",
+        "caption": "我們的旗艦產品系列"
+      }
+    },
+    {
+      "layout": "content",
+      "content": {
+        "title": "未來展望",
+        "body": "展望 2025 年,我們將持續投資研發創新,深化市場布局,強化客戶關係,預期營收成長將達到 30% 以上。我們有信心在激烈的市場競爭中保持領先地位,為股東創造更大價值。"
+      }
+    }
+  ]
+}
