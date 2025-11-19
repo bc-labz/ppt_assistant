@@ -5,6 +5,7 @@ PPT 助手工具包
 """
 
 from .core import PPTAssistant
+from .config import PPTConfig, DEFAULT_CONFIG
 
 __version__ = "1.0.0"
-__all__ = ["PPTAssistant"]
+__all__ = ["PPTAssistant", "PPTConfig", "DEFAULT_CONFIG"]

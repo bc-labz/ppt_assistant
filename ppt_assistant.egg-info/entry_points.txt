@@ -1,0 +1,2 @@
+[console_scripts]
+ppt-assistant = ppt_assistant:main
