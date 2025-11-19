@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+ppt_assistant/__init__.py
+ppt_assistant/core.py
+ppt_assistant.egg-info/PKG-INFO
+ppt_assistant.egg-info/SOURCES.txt
+ppt_assistant.egg-info/dependency_links.txt
+ppt_assistant.egg-info/entry_points.txt
+ppt_assistant.egg-info/requires.txt
+ppt_assistant.egg-info/top_level.txt
+tests/test_import.py

@@ -11,16 +11,21 @@ def test_import():
 
 
 def test_class_attributes():
-    """Test that the PPTAssistant class has expected attributes."""
-    from ppt_assistant import PPTAssistant
+    """Test that the PPTAssistant class and config work correctly."""
+    from ppt_assistant import PPTAssistant, DEFAULT_CONFIG
 
-    # Check class constants
-    assert hasattr(PPTAssistant, 'SLIDE_WIDTH')
-    assert hasattr(PPTAssistant, 'SLIDE_HEIGHT')
-    assert PPTAssistant.SLIDE_WIDTH == 13.333
-    assert PPTAssistant.SLIDE_HEIGHT == 7.5
+    # Check that config has expected attributes
+    assert hasattr(DEFAULT_CONFIG, 'SLIDE_WIDTH')
+    assert hasattr(DEFAULT_CONFIG, 'SLIDE_HEIGHT')
+    assert DEFAULT_CONFIG.SLIDE_WIDTH == 13.333
+    assert DEFAULT_CONFIG.SLIDE_HEIGHT == 7.5
 
-    print("✓ Class attributes verified")
+    # Test that PPTAssistant accepts config parameter
+    assert hasattr(PPTAssistant.__init__, '__code__')
+    init_params = PPTAssistant.__init__.__code__.co_varnames
+    assert 'ppt_config' in init_params
+
+    print("✓ Class and config attributes verified")
 
 
 if __name__ == "__main__":
