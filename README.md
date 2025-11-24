@@ -2,6 +2,8 @@
 
 一個功能強大的 Python PPT 生成工具,支持從 JSON 格式讀取內容,套用 .pptx 模板,並輸出包含文字、圖片、表格、圖表的專業簡報。
 
+**注意**: 此項目不再使用 Python 包裝系統,僅作為腳本分發。請使用 `pip install -r requirements.txt` 安裝依賴。
+
 ## 功能特色
 
 - **JSON 格式輸入**: 使用結構化的 JSON 格式定義簡報內容
@@ -16,13 +18,13 @@
 ## 安裝依賴
 
 ```bash
-pip3 install python-pptx
+pip install -r requirements.txt
 ```
 
 或使用 sudo (如果需要):
 
 ```bash
-sudo pip3 install python-pptx
+sudo pip install -r requirements.txt
 ```
 
 ## 使用方法
@@ -210,22 +212,27 @@ python3 ppt_assistant.py example_config.json
 
 ```
 ppt_assistant/
-├── ppt_assistant/        # 核心包
-│   ├── __init__.py       # 包初始化
+├── ppt_assistant/        # 核心模塊
+│   ├── __init__.py       # 模塊初始化
+│   ├── __main__.py       # 模塊主入口
 │   └── core.py           # 核心功能實現
-├── ppt_assistant.py      # 主入口點
+├── ppt_assistant.py      # 主腳本入口點
 ├── README.md             # 使用文檔
+├── requirements.txt      # 依賴列表
+├── .gitignore            # Git 忽略文件
 ├── examples/             # 示例文件
 │   ├── example_config.json   # 示例配置文件
 │   ├── template.pptx         # 示例模板文件 (16:9)
 │   ├── sample_image.png      # 示例圖片
 │   └── output_presentation.pptx  # 生成的示例簡報 (16:9)
-└── docs/                 # 文檔
-    ├── FORMATTING_GUIDE.md   # 格式化指南
-    ├── json_format.md        # JSON 格式詳細說明
-    ├── LAYOUT_SPECS.md       # 佈局規範
-    ├── PROJECT_SUMMARY.md    # 項目總結
-    └── QUICKSTART.md         # 快速開始
+├── docs/                 # 文檔
+│   ├── FORMATTING_GUIDE.md   # 格式化指南
+│   ├── json_format.md        # JSON 格式詳細說明
+│   ├── LAYOUT_SPECS.md       # 佈局規範
+│   ├── PROJECT_SUMMARY.md    # 項目總結
+│   └── QUICKSTART.md         # 快速開始
+└── tests/                # 測試文件
+    └── __init__.py       # 測試模塊初始化
 ```
 
 ## 進階使用
