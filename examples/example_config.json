@@ -1,5 +1,6 @@
 {
   "output": "examples/output_presentation.pptx",
+  "footer": "© 2024 PPT Assistant Demo",
   "slides": [
     {
       "layout": "title",

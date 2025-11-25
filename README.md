@@ -47,6 +47,7 @@ python3 ppt_assistant.py example_config.json
 ```json
 {
   "output": "output.pptx",
+  "footer": "頁腳文字(可選)",
   "slides": [
     {
       "layout": "佈局類型",
@@ -61,6 +62,7 @@ python3 ppt_assistant.py example_config.json
 ### 配置項說明
 
 - **output**: (必需) 輸出文件路徑
+- **footer**: (可選) 頁腳文字,將顯示在每張投影片底部
 - **slides**: (必需) 投影片數組,每個元素定義一張投影片
 
 **注意**: 生成的簡報會自動設置為 16:9 比例 (13.333 x 7.5 英寸)。

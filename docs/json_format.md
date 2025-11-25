@@ -5,6 +5,7 @@
 ```json
 {
   "output": "path/to/output.pptx",
+  "footer": "Footer text (optional)",
   "slides": [
     {
       "layout": "title",
@@ -110,6 +111,7 @@
 ```json
 {
   "output": "output.pptx",
+  "footer": "© 2024 Company Name",
   "slides": [
     {
       "layout": "title",

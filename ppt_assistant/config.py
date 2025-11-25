@@ -79,6 +79,11 @@ class PPTConfig:
     CHART_HEIGHT_RATIO: float = 0.9  # 90% of content height
     CHART_LEGEND_POSITION: int = 2  # Right side
 
+    # Footer layout
+    FOOTER_FONT_SIZE: int = 12
+    FOOTER_HEIGHT: float = 0.4
+    FOOTER_TOP_FROM_BOTTOM: float = 0.3
+
     # Colors (RGB tuples)
     TABLE_HEADER_BG_COLOR: Tuple[int, int, int] = (68, 114, 196)  # Blue
     TABLE_HEADER_TEXT_COLOR: Tuple[int, int, int] = (255, 255, 255)  # White
@@ -234,6 +239,11 @@ class PPTConfig:
     CHART_WIDTH_RATIO = 0.9  # 90% of content width
     CHART_HEIGHT_RATIO = 0.9  # 90% of content height
     CHART_LEGEND_POSITION = 2  # Right side
+
+    # Footer layout
+    FOOTER_FONT_SIZE = 12
+    FOOTER_HEIGHT = 0.4
+    FOOTER_TOP_FROM_BOTTOM = 0.3
 
     # Colors (RGB tuples)
     TABLE_HEADER_BG_COLOR = (68, 114, 196)  # Blue
