@@ -47,6 +47,9 @@ python3 ppt_assistant.py example_config.json
 ```json
 {
   "output": "output.pptx",
+  "footer": {
+    "icon_path": "path/to/icon.png"
+  },
   "slides": [
     {
       "layout": "佈局類型",
@@ -61,6 +64,9 @@ python3 ppt_assistant.py example_config.json
 ### 配置項說明
 
 - **output**: (必需) 輸出文件路徑
+- **footer**: (可選) 頁腳配置對象
+  - **icon_path**: (可選) 圖標文件路徑,將顯示在頁腳左側 (支持 PNG, JPG, JPEG, GIF, BMP; SVG 需要額外依賴項)
+  - 頁碼將自動顯示在右側 (格式: 當前頁/總頁數)
 - **slides**: (必需) 投影片數組,每個元素定義一張投影片
 
 **注意**: 生成的簡報會自動設置為 16:9 比例 (13.333 x 7.5 英寸)。

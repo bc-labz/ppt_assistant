@@ -1,5 +1,8 @@
 {
   "output": "examples/output_presentation.pptx",
+  "footer": {
+    "icon_path": "examples/sample_image.png"
+  },
   "slides": [
     {
       "layout": "title",
