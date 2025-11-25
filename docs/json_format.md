@@ -4,7 +4,6 @@
 
 ```json
 {
-  "template": "path/to/template.pptx",
   "output": "path/to/output.pptx",
   "slides": [
     {
@@ -110,7 +109,6 @@
 
 ```json
 {
-  "template": "template.pptx",
   "output": "output.pptx",
   "slides": [
     {

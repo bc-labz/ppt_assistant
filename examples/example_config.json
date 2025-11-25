@@ -1,5 +1,4 @@
 {
-  "template": "examples/template.pptx",
   "output": "examples/output_presentation.pptx",
   "slides": [
     {
