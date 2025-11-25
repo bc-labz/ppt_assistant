@@ -5,7 +5,9 @@
 ```json
 {
   "output": "path/to/output.pptx",
-  "footer": "Footer text (optional)",
+  "footer": {
+    "icon_path": "path/to/icon.png"
+  },
   "slides": [
     {
       "layout": "title",
@@ -111,7 +113,9 @@
 ```json
 {
   "output": "output.pptx",
-  "footer": "© 2024 Company Name",
+  "footer": {
+    "icon_path": "logo.png"
+  },
   "slides": [
     {
       "layout": "title",

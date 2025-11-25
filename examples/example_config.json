@@ -1,6 +1,8 @@
 {
   "output": "examples/output_presentation.pptx",
-  "footer": "© 2024 PPT Assistant Demo",
+  "footer": {
+    "icon_path": "examples/sample_image.png"
+  },
   "slides": [
     {
       "layout": "title",

@@ -27,7 +27,7 @@ class PPTAssistant:
 
         self.output_path = self.json_config.get('output')
         self.slides_data = self.json_config.get('slides', [])
-        self.footer_text = self.json_config.get('footer', '')
+        self.footer_config = self.json_config.get('footer', {})
 
         # 創建新簡報
         self.prs = Presentation()
@@ -38,43 +38,62 @@ class PPTAssistant:
 
     def create_presentation(self):
         """創建完整的簡報"""
-        for slide_data in self.slides_data:
+        for slide_index, slide_data in enumerate(self.slides_data, 1):
             layout_type = slide_data.get('layout')
             content = slide_data.get('content', {})
 
             if layout_type == 'title':
-                self._add_title_slide(content)
+                slide = self._add_title_slide(content)
             elif layout_type == 'content':
-                self._add_content_slide(content)
+                slide = self._add_content_slide(content)
             elif layout_type == 'two_column':
-                self._add_two_column_slide(content)
+                slide = self._add_two_column_slide(content)
             elif layout_type == 'image':
-                self._add_image_slide(content)
+                slide = self._add_image_slide(content)
             elif layout_type == 'table':
-                self._add_table_slide(content)
+                slide = self._add_table_slide(content)
             elif layout_type == 'chart':
-                self._add_chart_slide(content)
+                slide = self._add_chart_slide(content)
             else:
                 print(f"警告: 不支援的佈局類型 '{layout_type}'")
+                continue
+
+            # 添加頁腳
+            self._add_footer(slide, slide_index, len(self.slides_data))
 
         # 保存簡報
         self.prs.save(self.output_path)
         print(f"簡報已成功生成: {self.output_path}")
 
-    def _add_footer(self, slide):
+    def _add_footer(self, slide, slide_number, total_slides):
         """添加頁腳到投影片"""
-        if self.footer_text:
-            footer_shape = slide.shapes.add_textbox(
-                Inches(self.ppt_config.MARGIN),
-                Inches(self.ppt_config.SLIDE_HEIGHT - self.ppt_config.FOOTER_TOP_FROM_BOTTOM),
-                Inches(self.ppt_config.content_width),
+        if self.footer_config:
+            footer_y = self.ppt_config.SLIDE_HEIGHT - self.ppt_config.FOOTER_TOP_FROM_BOTTOM
+
+            # 添加圖標 (如果指定)
+            icon_path = self.footer_config.get('icon_path', self.footer_config.get('icon'))
+            if icon_path and os.path.exists(icon_path):
+                # 圖標在左側
+                slide.shapes.add_picture(
+                    icon_path,
+                    Inches(self.ppt_config.MARGIN),
+                    Inches(footer_y - 0.1),  # 稍微上移以對齊文字
+                    height=Inches(self.ppt_config.FOOTER_HEIGHT)
+                )
+
+            # 添加頁碼在右側
+            page_text = f"{slide_number}/{total_slides}"
+            page_shape = slide.shapes.add_textbox(
+                Inches(self.ppt_config.SLIDE_WIDTH - self.ppt_config.MARGIN - 1.0),  # 右側1英寸寬度
+                Inches(footer_y),
+                Inches(1.0),
                 Inches(self.ppt_config.FOOTER_HEIGHT)
             )
-            footer_tf = footer_shape.text_frame
-            footer_p = footer_tf.paragraphs[0]
-            footer_p.text = self.footer_text
-            footer_p.font.size = Pt(self.ppt_config.FOOTER_FONT_SIZE)
-            footer_p.alignment = PP_PARAGRAPH_ALIGNMENT.CENTER
+            page_tf = page_shape.text_frame
+            page_p = page_tf.paragraphs[0]
+            page_p.text = page_text
+            page_p.font.size = Pt(self.ppt_config.FOOTER_FONT_SIZE)
+            page_p.alignment = PP_PARAGRAPH_ALIGNMENT.RIGHT
 
     def _add_title_slide(self, content):
         """添加標題頁"""
@@ -106,8 +125,7 @@ class PPTAssistant:
             tf.paragraphs[0].alignment = PP_PARAGRAPH_ALIGNMENT.CENTER
             tf.paragraphs[0].font.size = Pt(self.ppt_config.SUBTITLE_FONT_SIZE)
 
-        # 添加頁腳
-        self._add_footer(slide)
+        return slide
 
     def _add_content_slide(self, content):
         """添加內容頁"""
@@ -158,8 +176,7 @@ class PPTAssistant:
             p.font.size = Pt(self.ppt_config.BODY_FONT_SIZE)
             p.alignment = PP_PARAGRAPH_ALIGNMENT.LEFT
 
-        # 添加頁腳
-        self._add_footer(slide)
+        return slide
 
     def _add_two_column_slide(self, content):
         """添加雙欄佈局頁"""
@@ -215,8 +232,7 @@ class PPTAssistant:
         right_p.alignment = PP_PARAGRAPH_ALIGNMENT.LEFT
         right_p.space_after = Pt(self.ppt_config.COLUMN_SPACE_AFTER)
 
-        # 添加頁腳
-        self._add_footer(slide)
+        return slide
 
     def _add_image_slide(self, content):
         """添加圖片頁"""
@@ -268,8 +284,7 @@ class PPTAssistant:
             caption_p.alignment = PP_PARAGRAPH_ALIGNMENT.CENTER
             caption_p.font.italic = True
 
-        # 添加頁腳
-        self._add_footer(slide)
+        return slide
 
     def _add_table_slide(self, content):
         """添加表格頁"""
@@ -345,8 +360,7 @@ class PPTAssistant:
                         cell.fill.solid()
                         cell.fill.fore_color.rgb = RGBColor(*self.ppt_config.TABLE_ALT_ROW_BG_COLOR)
 
-        # 添加頁腳
-        self._add_footer(slide)
+        return slide
 
     def _add_chart_slide(self, content):
         """添加圖表頁"""
@@ -408,5 +422,4 @@ class PPTAssistant:
             chart.legend.position = self.ppt_config.CHART_LEGEND_POSITION
             chart.legend.include_in_layout = False
 
-        # 添加頁腳
-        self._add_footer(slide)
+        return slide
