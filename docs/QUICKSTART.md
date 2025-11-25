@@ -14,7 +14,6 @@ sudo pip3 install python-pptx
 
 ```json
 {
-  "template": "template.pptx",
   "output": "my_first_presentation.pptx",
   "slides": [
     {
@@ -64,7 +63,6 @@ python3 ppt_assistant.py example_config.json
 - 查看 `README.md` 了解詳細功能
 - 查看 `json_format.md` 了解 JSON 格式規範
 - 修改 `example_config.json` 嘗試不同的配置
-- 創建自己的模板文件
 
 ## 常用命令
 

@@ -25,15 +25,11 @@ class PPTAssistant:
 
         self.ppt_config = ppt_config or DEFAULT_CONFIG
 
-        self.template_path = self.json_config.get('template')
         self.output_path = self.json_config.get('output')
         self.slides_data = self.json_config.get('slides', [])
 
-        # 載入模板或創建新簡報
-        if self.template_path and os.path.exists(self.template_path):
-            self.prs = Presentation(self.template_path)
-        else:
-            self.prs = Presentation()
+        # 創建新簡報
+        self.prs = Presentation()
 
         # 設置為 16:9 比例 (PowerPoint 標準寬屏尺寸)
         self.prs.slide_width = Inches(self.ppt_config.SLIDE_WIDTH)
