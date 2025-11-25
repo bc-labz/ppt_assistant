@@ -73,13 +73,18 @@ class PPTAssistant:
             # 添加圖標 (如果指定)
             icon_path = self.footer_config.get('icon_path', self.footer_config.get('icon'))
             if icon_path and os.path.exists(icon_path):
-                # 圖標在左側
-                slide.shapes.add_picture(
-                    icon_path,
-                    Inches(self.ppt_config.MARGIN),
-                    Inches(footer_y - 0.1),  # 稍微上移以對齊文字
-                    height=Inches(self.ppt_config.FOOTER_HEIGHT)
-                )
+                # 注意: SVG 文件需要額外的依賴項 (cairosvg 或 svglib + Cairo)
+                # 目前支持 PNG, JPG, JPEG, GIF, BMP 等格式
+                if not icon_path.lower().endswith('.svg'):
+                    # 圖標在左側
+                    slide.shapes.add_picture(
+                        icon_path,
+                        Inches(self.ppt_config.MARGIN),
+                        Inches(footer_y - 0.1),  # 稍微上移以對齊文字
+                        height=Inches(self.ppt_config.FOOTER_HEIGHT)
+                    )
+                else:
+                    print(f"警告: SVG 文件 '{icon_path}' 需要額外的依賴項才能轉換為圖片格式")
 
             # 添加頁碼在右側
             page_text = f"{slide_number}/{total_slides}"

@@ -21,6 +21,11 @@
 }
 ```
 
+**頁腳說明**:
+- `icon_path`: 可選的圖標文件路徑 (支持 PNG, JPG, JPEG, GIF, BMP 格式)
+- SVG 文件需要額外的依賴項 (cairosvg 或 svglib + Cairo 圖形庫)
+- 頁碼將自動顯示在右側,格式為 "當前頁/總頁數"
+
 ## 支援的佈局類型
 
 ### 1. title - 標題頁

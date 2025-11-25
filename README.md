@@ -65,7 +65,7 @@ python3 ppt_assistant.py example_config.json
 
 - **output**: (必需) 輸出文件路徑
 - **footer**: (可選) 頁腳配置對象
-  - **icon_path**: (可選) 圖標文件路徑,將顯示在頁腳左側
+  - **icon_path**: (可選) 圖標文件路徑,將顯示在頁腳左側 (支持 PNG, JPG, JPEG, GIF, BMP; SVG 需要額外依賴項)
   - 頁碼將自動顯示在右側 (格式: 當前頁/總頁數)
 - **slides**: (必需) 投影片數組,每個元素定義一張投影片
 
